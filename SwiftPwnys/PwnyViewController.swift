@@ -20,7 +20,8 @@ class PwnyViewController: UIViewController {
     
     let height: CGFloat = CGFloat(44.0)
     
-    //Here we are referring to `self` inside the body failing to use 
+    //Here we are referring to `self` inside the body, there appears to be a race on initialization that 
+    //if we don't load self lazily then we lose the race and can't call into it.
     @lazy var myButton: UIButton = {
         let _myButton = UIButton.buttonWithType(.System) as UIButton
         _myButton.frame = CGRectMake(CGRectGetMinX(self.view.bounds),CGRectGetMidY(self.view.bounds) - self.height / 2,CGRectGetWidth(self.view.bounds),self.height)
@@ -63,6 +64,8 @@ class PwnyViewController: UIViewController {
             })
     }
     
+    
+    //UIAlertViewController
     func showAlert(){
         let alert = UIAlertController(title: "Alert", message: "You clicked the button", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
