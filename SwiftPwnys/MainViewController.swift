@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
             y:CGRectGetMidY(self.view.bounds) - self.height / 2,
             width:CGRectGetWidth(self.view.bounds),
             height:self.height)
-        _myButton.setTitle("Push me!", forState: .Normal)
+        _myButton.setTitle("Push me!", forState:.Normal)
         _myButton.addTarget(self, action: "buttonPressed", forControlEvents:.TouchUpInside)
         return _myButton
     }()
@@ -46,6 +46,10 @@ class MainViewController: UIViewController {
     }
     
     func buttonPressed(){
+        self.navigationController.pushViewController(PwnyViewController(nibName: nil, bundle: nil), animated: true)
+    }
+    
+    func animateMyButton () {
         UIView.animateWithDuration(1,
             animations: {
                 self.myButton.frame = CGRect(

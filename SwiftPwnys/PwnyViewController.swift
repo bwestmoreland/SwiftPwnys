@@ -8,33 +8,36 @@
 
 import UIKit
 
-class PwnyViewController: UIViewController {
+class PwnyViewController: UIViewController, UITableViewDataSource {
+    
+    let pwnys: String[] = ["Twilight Sparkle", "Applejack", "Fluttershy", "Rarity", "Pinkypie", "Rainbow Dash", "Spike"]
+    var tableView: UITableView?
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        // Custom initialization
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        tableView = UITableView(frame:self.view.bounds, style:.Grouped)
+        tableView!.dataSource = self
+        self.view.addSubview(tableView)
+        tableView?.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier:"UITableViewCell")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+        return pwnys.count
     }
-    */
-
+    
+    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
+        
+        cell.textLabel.text = pwnys[indexPath.row]
+        return cell
+    }
 }
