@@ -8,16 +8,24 @@
 
 import UIKit
 
-class PwnyViewController: UIViewController, UITableViewDataSource {
+class PwnyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let pwnys: String[] = ["Twilight Sparkle", "Applejack", "Fluttershy", "Rarity", "Pinkypie", "Rainbow Dash", "Spike"]
+    let cellClass: AnyClass! = UITableViewCell.classForCoder()
     
     @lazy var tableView: UITableView = {
         let _tableView = UITableView(frame:self.view.bounds, style:.Grouped)
         _tableView.dataSource = self
-        _tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier:"UITableViewCell")
+        _tableView.delegate = self
+        _tableView.registerClass(self.cellClass, forCellReuseIdentifier:NSStringFromClass(self.cellClass))
         return _tableView
     }()
+    
+    func showAlert(message: String){
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil);
+    }
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -37,9 +45,14 @@ class PwnyViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("UITableViewCell", forIndexPath: indexPath) as UITableViewCell
-        
+        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(NSStringFromClass(self.cellClass), forIndexPath: indexPath) as UITableViewCell
         cell.textLabel.text = pwnys[indexPath.row]
         return cell
+    }
+    
+    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!){
+        tableView.deselectRowAtIndexPath(indexPath, animated:true);
+        let message = "You selected \(pwnys[indexPath.row])!"
+        showAlert(message)
     }
 }
