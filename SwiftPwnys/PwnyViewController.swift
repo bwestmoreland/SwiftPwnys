@@ -11,7 +11,7 @@ import UIKit
 class PwnyViewController: UIViewController {
     
     //Here we load a label using a closure without needing to specify lazy, nowhere in the lexical scope is self captured
-    var myLabel: UILabel = {
+    let myLabel: UILabel = {
         let _myLabel = UILabel(frame: CGRectMake(10, 20, 300, 44))
         _myLabel.text = "Hello"
         _myLabel.textAlignment = .Center
@@ -21,10 +21,14 @@ class PwnyViewController: UIViewController {
     let height: CGFloat = CGFloat(44.0)
     
     //Here we are referring to `self` inside the body, there appears to be a race on initialization that 
-    //if we don't load self lazily then we lose the race and can't call into it.
+    //if we don't load self lazily then we lose the race and self doesn't exist, the compiler won't let us continue
     @lazy var myButton: UIButton = {
         let _myButton = UIButton.buttonWithType(.System) as UIButton
-        _myButton.frame = CGRectMake(CGRectGetMinX(self.view.bounds),CGRectGetMidY(self.view.bounds) - self.height / 2,CGRectGetWidth(self.view.bounds),self.height)
+        _myButton.frame = CGRect(
+            x:CGRectGetMinX(self.view.bounds),
+            y:CGRectGetMidY(self.view.bounds) - self.height / 2,
+            width:CGRectGetWidth(self.view.bounds),
+            height:self.height)
         _myButton.setTitle("Push me!", forState: .Normal)
         _myButton.addTarget(self, action: "buttonPressed", forControlEvents:.TouchUpInside)
         return _myButton
