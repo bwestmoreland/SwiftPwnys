@@ -10,7 +10,8 @@
 		2B9A6B93193E7FB800B8AFB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A6B92193E7FB800B8AFB2 /* AppDelegate.swift */; };
 		2B9A6B95193E7FB800B8AFB2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9A6B94193E7FB800B8AFB2 /* Images.xcassets */; };
 		2B9A6BA1193E7FB800B8AFB2 /* SwiftPwnysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A6BA0193E7FB800B8AFB2 /* SwiftPwnysTests.swift */; };
-		2B9A6BAD193E804D00B8AFB2 /* PwnyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A6BAC193E804D00B8AFB2 /* PwnyViewController.swift */; };
+		2B9A6BAD193E804D00B8AFB2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9A6BAC193E804D00B8AFB2 /* MainViewController.swift */; };
+		2BE7FDBB194140010070ADCE /* PwnyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE7FDBA194140010070ADCE /* PwnyViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,8 @@
 		2B9A6B9A193E7FB800B8AFB2 /* SwiftPwnysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftPwnysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9A6B9F193E7FB800B8AFB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B9A6BA0193E7FB800B8AFB2 /* SwiftPwnysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftPwnysTests.swift; sourceTree = "<group>"; };
-		2B9A6BAC193E804D00B8AFB2 /* PwnyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PwnyViewController.swift; path = SwiftPwnys/PwnyViewController.swift; sourceTree = "<group>"; };
+		2B9A6BAC193E804D00B8AFB2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = SwiftPwnys/MainViewController.swift; sourceTree = "<group>"; };
+		2BE7FDBA194140010070ADCE /* PwnyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PwnyViewController.swift; path = SwiftPwnys/PwnyViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +57,8 @@
 		2B9A6B84193E7FB800B8AFB2 = {
 			isa = PBXGroup;
 			children = (
-				2B9A6BAC193E804D00B8AFB2 /* PwnyViewController.swift */,
+				2B9A6BAC193E804D00B8AFB2 /* MainViewController.swift */,
+				2BE7FDBA194140010070ADCE /* PwnyViewController.swift */,
 				2B9A6B8F193E7FB800B8AFB2 /* SwiftPwnys */,
 				2B9A6B9D193E7FB800B8AFB2 /* SwiftPwnysTests */,
 				2B9A6B8E193E7FB800B8AFB2 /* Products */,
@@ -203,7 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B9A6BAD193E804D00B8AFB2 /* PwnyViewController.swift in Sources */,
+				2BE7FDBB194140010070ADCE /* PwnyViewController.swift in Sources */,
+				2B9A6BAD193E804D00B8AFB2 /* MainViewController.swift in Sources */,
 				2B9A6B93193E7FB800B8AFB2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
