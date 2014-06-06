@@ -11,7 +11,13 @@ import UIKit
 class PwnyViewController: UIViewController, UITableViewDataSource {
     
     let pwnys: String[] = ["Twilight Sparkle", "Applejack", "Fluttershy", "Rarity", "Pinkypie", "Rainbow Dash", "Spike"]
-    var tableView: UITableView?
+    
+    @lazy var tableView: UITableView = {
+        let _tableView = UITableView(frame:self.view.bounds, style:.Grouped)
+        _tableView.dataSource = self
+        _tableView.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier:"UITableViewCell")
+        return _tableView
+    }()
 
     init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -19,11 +25,7 @@ class PwnyViewController: UIViewController, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView = UITableView(frame:self.view.bounds, style:.Grouped)
-        tableView!.dataSource = self
         self.view.addSubview(tableView)
-        tableView?.registerClass(UITableViewCell.classForCoder(), forCellReuseIdentifier:"UITableViewCell")
     }
 
     override func didReceiveMemoryWarning() {
